@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>붙여넣기 시 색상 변경 예제</title>
+  <script>
+    // 붙여넣기 이벤트 처리 함수
+    function handlePaste(event) {
+      setTimeout(function() {
+        event.target.style.color = 'red';
+      }, 0);
+    }
+
+    // 페이지 로드 시 이벤트 리스너 추가
+    window.onload = function() {
+      var textFields = document.getElementsByTagName('textarea');
+      for (var i = 0; i < textFields.length; i++) {
+        textFields[i].addEventListener('paste', handlePaste);
+      }
+
+      var inputFields = document.getElementsByTagName('input');
+      for (var i = 0; i < inputFields.length; i++) {
+        if (inputFields[i].type === 'text') {
+          inputFields[i].addEventListener('paste', handlePaste);
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>붙여넣기 시 색상 변경 예제</h1>
+  <form>
+    <label for="shortAnswer">서술형 답안:</label><br>
+    <textarea id="shortAnswer" rows="4" cols="50"></textarea><br><br>
+    <label for="shortInput">단답형 답안:</label><br>
+    <input type="text" id="shortInput"><br><br>
+    <input type="submit" value="제출">
+  </form>
+</body>
+</html>
